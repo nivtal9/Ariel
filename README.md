@@ -1,2 +1,2 @@
 # Ariel
-computer science in Ariel uni
+Computer science Student in Ariel uni
