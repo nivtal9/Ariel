@@ -4,18 +4,18 @@ OBJECTS_MAIN=main.o
 OBJECTS_LIB= myBank.o 
 FLAGS= -Wall -g
 
-all:  mybank mains 	
+all:  myBank mains 	
 
 
-mybank: $(OBJECTS_LIB)
-	$(AR) -rcs libMyBank.a $(OBJECTS_LIB)	
+myBank: $(OBJECTS_LIB)
+	$(AR) -rcs libmyBank.a $(OBJECTS_LIB)	
 
-mains: $(OBJECTS_MAIN) libMyBank.a 
-	$(CC) $(FLAGS) -o mains $(OBJECTS_MAIN) libMyBank.a
+mains: $(OBJECTS_MAIN) libmyBank.a 
+	$(CC) $(FLAGS) -o mains $(OBJECTS_MAIN) libmyBank.a
 
 
-myBank.o: myBank.c myBank.h 
-	$(CC) $(FLAGS) -c MyBank.c
+MyBank.o: myBank.c myBank.h 
+	$(CC) $(FLAGS) -c myBank.c
 main.o: main.c myBank.h   
 	$(CC) $(FLAGS)  -c main.c 
 
