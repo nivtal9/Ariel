@@ -2,11 +2,11 @@
 //
 
 #include "stdio.h"
-#include "MyBank.h"
+#include "myBank.h"
 bool BankIsOpen = true;
 
 int main(){
-	char Action = NULL;
+	char Action;
 	while (BankIsOpen == true) {
 		printf("Transaction type?\n");
 		scanf(" %c", &Action);
@@ -16,7 +16,11 @@ int main(){
 			double money;
 			printf("Initial deposit?:\n");
 			if (scanf(" %lf", &money) == 1) {
+				if(money>=0){
 				NewAccount(money);
+				}else{
+					printf("enter a positive amount\n");
+				}
 			}
 			else
 			{
@@ -49,7 +53,12 @@ int main(){
 				if ((900 < Account_Id && Account_Id < 951)) {
 					printf("please insert the deposit amount\n");
 					if (scanf(" %lf", &money) == 1) {
-						Deposit(Account_Id,money);
+						if(money>=0){
+							Deposit(Account_Id,money);
+						}
+						else{
+							printf("enter a positive amount\n");
+						}
 					}
 				}
 				else {
@@ -69,7 +78,12 @@ int main(){
 				if ((900 < Account_Id && Account_Id < 951)) {
 					printf("please insert the withdrawen amount\n");
 					if (scanf(" %lf", &money) == 1) {
-						Deposit(Account_Id, (-1*money));
+						if(money>=0){
+							Deposit(Account_Id,-1*money);
+						}
+						else{
+							printf("enter a positive amount\n");
+						}
 					}
 				}
 				else {
@@ -100,8 +114,12 @@ int main(){
 			double precent;
 			printf("please enter interest rate:\n");
 			if (scanf(" %lf", &precent) == 1) {
-				precent = (precent / 100) + 1;
-				InterestRate(precent);
+				if(precent>=0){
+					precent = (precent / 100) + 1;
+					InterestRate(precent);
+				}else{
+					printf("wrong Account_Id.please try again\n");
+				}
 			}
 			else {
 				printf("invalid precent. please try again\n");
@@ -114,6 +132,7 @@ int main(){
 		}
 		case 'E': {
 			ExitBank();
+			BankIsOpen=false;
 			break;
 		}
 		default: {
@@ -121,7 +140,7 @@ int main(){
 		}
 		}
 		if (BankIsOpen == false) {
-			printf("Bank is closed, please restart the program\n");
+			printf("Bank is closed.\n");
 		}
 	}
 }
